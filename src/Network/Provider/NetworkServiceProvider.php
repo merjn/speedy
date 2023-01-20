@@ -8,6 +8,8 @@ use Illuminate\Support\Collection;
 use League\Config\Configuration;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
+use Merjn\Speedy\Contracts\Communication\RequestFactoryInterface;
+use Merjn\Speedy\Contracts\Network\Session\SessionFactoryInterface;
 use Merjn\Speedy\Contracts\Network\Session\SessionRepositoryInterface;
 use Merjn\Speedy\Network\Config\NetworkConfig;
 use Merjn\Speedy\Network\Hook\ConnectHookBuilder;
@@ -16,6 +18,7 @@ use Merjn\Speedy\Network\Hook\OnReceiveHookBuilder;
 use Merjn\Speedy\Network\Logging\OutgoingPacketLoggerDecorator;
 use Merjn\Speedy\Network\OpenSwooleServerFactory;
 use Merjn\Speedy\Network\ServerBootstrap;
+use Merjn\Speedy\Routing\Router;
 
 class NetworkServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
 {
@@ -53,7 +56,7 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
     protected function createNetworkHooks(): void
     {
         $hooks = new Collection([
-            new OutgoingPacketLoggerDecorator($this->addConnectionHook()()),
+            $this->addConnectionHook()(),
             $this->addOnReceiveHook()(),
         ]);
 
@@ -63,7 +66,10 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
     protected function addConnectionHook(): ConnectHookBuilder
     {
         $this->getContainer()->add(ConnectHookBuilder::class, function () {
-            return new ConnectHookBuilder($this->getContainer()->get(SessionRepositoryInterface::class));
+            return new ConnectHookBuilder(
+                $this->getContainer()->get(SessionFactoryInterface::class),
+                $this->getContainer()->get(SessionRepositoryInterface::class)
+            );
         });
 
         return $this->getContainer()->get(ConnectHookBuilder::class);
@@ -72,7 +78,11 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
     protected function addOnReceiveHook(): OnReceiveHookBuilder
     {
         $this->getContainer()->add(OnReceiveHookBuilder::class, function () {
-            return new OnReceiveHookBuilder($this->getContainer()->get(SessionRepositoryInterface::class));
+            return new OnReceiveHookBuilder(
+                $this->getContainer()->get(RequestFactoryInterface::class),
+                $this->getContainer()->get(SessionRepositoryInterface::class),
+                $this->getContainer()->get(Router::class)
+            );
         });
 
         return $this->getContainer()->get(OnReceiveHookBuilder::class);

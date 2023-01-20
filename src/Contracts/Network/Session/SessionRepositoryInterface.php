@@ -7,11 +7,10 @@ interface SessionRepositoryInterface
     /**
      * Add a new session.
      *
-     * @param mixed $id
      * @param SessionInterface $session
      * @return void
      */
-    public function add(mixed $id, SessionInterface $session): void;
+    public function add(SessionInterface $session): void;
 
     /**
      * Get a session object by id.

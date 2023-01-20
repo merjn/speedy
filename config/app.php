@@ -16,6 +16,9 @@ return [
         ],
 
         'providers' => [
+            \Merjn\App\Presentation\Middleware\MiddlewareServiceProvider::class,
+            \Merjn\Speedy\Communication\Provider\CommunicationServiceProvider::class,
+            \Merjn\Speedy\Routing\Provider\RouteServiceProvider::class,
             \Merjn\Speedy\Network\Session\Provider\SessionServiceProvider::class,
             \Merjn\Speedy\Network\Provider\NetworkServiceProvider::class,
         ],

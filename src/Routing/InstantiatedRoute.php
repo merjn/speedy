@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Routing;
 
+use Merjn\Speedy\Contracts\Middleware\MiddlewareInterface;
+
 class InstantiatedRoute
 {
+    /**
+     * @param string $header
+     * @param object $controller
+     * @param string $action
+     * @param array<MiddlewareInterface> $middleware
+     */
     public function __construct(
         private readonly string $header,
         private readonly object $controller,
@@ -44,7 +52,7 @@ class InstantiatedRoute
     /**
      * Get the middleware.
      *
-     * @return array
+     * @return array<MiddlewareInterface>
      */
     public function getMiddleware(): array
     {

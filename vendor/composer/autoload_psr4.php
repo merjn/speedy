@@ -21,6 +21,7 @@ return array(
     'OpenSwoole\\Core\\' => array($vendorDir . '/openswoole/core/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Merjn\\Speedy\\' => array($baseDir . '/src'),
+    'Merjn\\App\\' => array($baseDir . '/app'),
     'League\\Container\\' => array($vendorDir . '/league/container/src'),
     'League\\Config\\' => array($vendorDir . '/league/config/src'),
     'Illuminate\\Support\\' => array($vendorDir . '/illuminate/collections', $vendorDir . '/illuminate/conditionable', $vendorDir . '/illuminate/macroable', $vendorDir . '/illuminate/support'),

@@ -51,11 +51,11 @@ class MemorySessionRepository implements SessionRepositoryInterface
         });
     }
 
-    public function add(mixed $id, SessionInterface $session): void
+    public function add(SessionInterface $session): void
     {
-        $this->mx->synchronize(function () use ($id, $session) {
-            $this->sessions[$id] = $session;
-            $this->sessionsFromStorage->attach($session, $id);
+        $this->mx->synchronize(function () use ($session) {
+            $this->sessions[$session->getId()] = $session;
+            $this->sessionsFromStorage->attach($session, $session->getId());
         });
     }
 }

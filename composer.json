@@ -10,11 +10,13 @@
         "openswoole/ide-helper": "^22.0",
         "league/config": "^1.2",
         "illuminate/support": "^9.48",
-        "monolog/monolog": "^3.2"
+        "monolog/monolog": "^3.2",
+      "ext-ctype": "*"
     },
     "autoload": {
         "psr-4": {
-            "Merjn\\Speedy\\": "src/"
+            "Merjn\\Speedy\\": "src/",
+            "Merjn\\App\\": "app/"
         },
 
         "files": [

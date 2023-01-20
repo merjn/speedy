@@ -12,7 +12,7 @@ interface RouteRepositoryInterface
      * Get a route.
      *
      * @param string $header
-     * @return Route|null
+     * @return ?InstantiatedRoute
      */
     public function get(string $header): ?InstantiatedRoute;
 }

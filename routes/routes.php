@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Merjn\Speedy\Player\Presentation\Controller\Login\PlayerLoginController;
-use Merjn\Speedy\Ratelimiting\RatelimitIncomingRequests;
+use Merjn\App\Presentation\Controller\VersionCheckController;
+use Merjn\App\Presentation\Middleware\LogRequestMiddleware;
 use Merjn\Speedy\Routing\Builder\RouteCollection;
 
 $routes = new RouteCollection();
 
-$routes->withMiddleware(RatelimitIncomingRequests::class, function (RouteCollection $routes): void {
-    $routes->add('LOGIN', PlayerLoginController::class);
+$routes->withMiddleware(LogRequestMiddleware::class, function (RouteCollection $routes): void {
+    $routes->add('VERSIONCHECK', VersionCheckController::class);
 });
 
 return $routes;

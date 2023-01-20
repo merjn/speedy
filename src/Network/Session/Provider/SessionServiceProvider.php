@@ -7,9 +7,11 @@ namespace Merjn\Speedy\Network\Session\Provider;
 use League\Config\Configuration;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use League\Container\ServiceProvider\BootableServiceProviderInterface;
+use Merjn\Speedy\Contracts\Network\Session\SessionFactoryInterface;
 use Merjn\Speedy\Contracts\Network\Session\SessionRepositoryInterface;
 use Merjn\Speedy\Contracts\Network\Session\SessionServiceInterface;
 use Merjn\Speedy\Network\Session\MemorySessionRepository;
+use Merjn\Speedy\Network\Session\SessionFactory;
 use Merjn\Speedy\Network\Session\SwooleSessionService;
 
 class SessionServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
@@ -41,6 +43,10 @@ class SessionServiceProvider extends AbstractServiceProvider implements Bootable
 
         $this->getContainer()->addShared(SessionServiceInterface::class, function (): SwooleSessionService {
             return new SwooleSessionService($this->getContainer()->get(SessionRepositoryInterface::class));
+        });
+
+        $this->getContainer()->add(SessionFactoryInterface::class, function () {
+            return new SessionFactory();
         });
     }
 

@@ -33,11 +33,11 @@ class RouteCollection
      */
     public function withMiddleware(array|string $middleware, \Closure $callback): RouteCollection
     {
+        $middleware = is_string($middleware) ? [$middleware] : $middleware;
         $routeCollection = new RouteCollection(array_merge($this->middleware, $middleware));
-
         $callback($routeCollection);
 
-        $this->routes->merge($routeCollection->toArray());
+        $this->routes = $this->routes->merge($routeCollection->toArray());
 
         return $routeCollection;
     }

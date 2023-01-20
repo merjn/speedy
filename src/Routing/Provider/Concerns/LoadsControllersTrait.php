@@ -22,6 +22,7 @@ trait LoadsControllersTrait
     {
         $controller = new ReflectionClass($controllerClass);
 
+
         return $controller->newInstanceArgs($this->instantiateControllerParameters($controller));
     }
 
@@ -35,6 +36,6 @@ trait LoadsControllersTrait
     {
         return array_map(function (ReflectionParameter $parameter): object {
             return $this->getContainer()->get($parameter->getType()->getName());
-        }, $controller->getConstructor()->getParameters());
+        }, $controller?->getConstructor()?->getParameters() ?? []);
     }
 }
