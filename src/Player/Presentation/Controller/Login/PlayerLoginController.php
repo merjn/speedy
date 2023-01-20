@@ -6,7 +6,6 @@ namespace Merjn\Speedy\Player\Presentation\Controller\Login;
 
 use Merjn\Speedy\Contracts\Network\Session\SessionInterface;
 use Merjn\Speedy\Contracts\Network\Session\SessionServiceInterface;
-use Merjn\Speedy\Controller\AbstractController;
 use Merjn\Speedy\Player\Application\Login\ValidateLoginAction;
 use Merjn\Speedy\Player\Presentation\Request\Login\PlayerLoginRequest;
 
@@ -15,7 +14,7 @@ use Merjn\Speedy\Player\Presentation\Request\Login\PlayerLoginRequest;
  *
  * @package Merjn\Speedy\Player\Presentation\Controller
  */
-final class PlayerLoginController extends AbstractController
+final class PlayerLoginController
 {
     public function __construct(
         private readonly ValidateLoginAction $validateLogin,
