@@ -7,10 +7,10 @@ namespace Merjn\Speedy\Contracts\Communication;
 interface ServerMessageInterface
 {
     /**
-     * Initialize the server message.
+     * Create a new string.
      *
-     * @param string $header
+     * @param string $argument
      * @return void
      */
-    public function write(string $header): void;
+    public function newString(string $argument): void;
 }
