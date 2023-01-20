@@ -1,0 +1,33 @@
+{
+    "name": "merjn/speedy",
+    "description": "Fastest Habbo v1 emulator ever.",
+    "type": "project",
+    "require": {
+        "phpunit/phpunit": "^9.5",
+        "league/container": "^4.2",
+        "ext-openswoole": "^22.0",
+        "openswoole/core": "22.1.1",
+        "openswoole/ide-helper": "^22.0",
+        "league/config": "^1.2",
+        "illuminate/support": "^9.48",
+        "monolog/monolog": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Merjn\\Speedy\\": "src/"
+        },
+
+        "files": [
+            "functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Merijn",
+            "email": "merijn@raidhotel.nl"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.2"
+    }
+}
