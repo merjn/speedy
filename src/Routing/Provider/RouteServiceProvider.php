@@ -10,7 +10,7 @@ use Merjn\Speedy\Contracts\Routing\RouteRepositoryInterface;
 use Merjn\Speedy\Routing\Builder\Route;
 use Merjn\Speedy\Routing\Builder\RouteCollection;
 use Merjn\Speedy\Routing\InstantiatedRoute;
-use Merjn\Speedy\Routing\Router;
+use Merjn\Speedy\Routing\FrontController;
 use Merjn\Speedy\Routing\RouteRepository;
 
 class RouteServiceProvider extends AbstractServiceProvider implements BootableServiceProviderInterface
@@ -19,7 +19,7 @@ class RouteServiceProvider extends AbstractServiceProvider implements BootableSe
     use Concerns\LoadsControllersTrait;
 
     protected array $provides = [
-        Router::class,
+        FrontController::class,
     ];
 
     /**
@@ -57,8 +57,8 @@ class RouteServiceProvider extends AbstractServiceProvider implements BootableSe
             return new RouteRepository($this->createInstantiatedRoutes());
         });
 
-        $this->getContainer()->add(Router::class, function (): Router {
-            return new Router($this->getContainer()->get(RouteRepositoryInterface::class));
+        $this->getContainer()->add(FrontController::class, function (): FrontController {
+            return new FrontController($this->getContainer()->get(RouteRepositoryInterface::class));
         });
     }
 

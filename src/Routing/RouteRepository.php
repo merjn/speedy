@@ -14,6 +14,6 @@ final class RouteRepository implements RouteRepositoryInterface
 
     public function get(string $header): ?InstantiatedRoute
     {
-        // TODO: Implement get() method.
+        return $this->routes[$header] ?? null;
     }
 }

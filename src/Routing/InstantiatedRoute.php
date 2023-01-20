@@ -34,6 +34,14 @@ class InstantiatedRoute
     }
 
     /**
+     * @return string
+     */
+    public function getAction(): string
+    {
+        return $this->action;
+    }
+
+    /**
      * Get the middleware.
      *
      * @return array
