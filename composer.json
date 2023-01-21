@@ -11,12 +11,18 @@
         "league/config": "^1.2",
         "illuminate/support": "^9.48",
         "monolog/monolog": "^3.2",
-      "ext-ctype": "*"
+      "ext-ctype": "*",
+        "doctrine/orm": "^2.14",
+        "doctrine/dbal": "^3.5",
+        "symfony/yaml": "^6.2",
+        "symfony/cache": "^6.2",
+        "doctrine/migrations": "^3.5"
     },
     "autoload": {
         "psr-4": {
             "Merjn\\Speedy\\": "src/",
-            "Merjn\\App\\": "app/"
+            "Merjn\\App\\": "app/",
+            "Merjn\\Database\\": "database/"
         },
 
         "files": [
