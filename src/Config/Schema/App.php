@@ -16,6 +16,14 @@ class App
                 'workers' => Expect::int()->required(),
             ]),
 
+            'database' => Expect::structure([
+                'db_driver' => Expect::string()->required(),
+                'user' => Expect::string()->required(),
+                'dbname' => Expect::string()->required(),
+                'password' => Expect::string()->required(),
+                'dev_mode' => Expect::bool()->required(),
+            ]),
+
             'packet' => Expect::structure([
                 'logging' => Expect::structure([
                     'enabled' => Expect::bool()->required(),

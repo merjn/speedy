@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Contracts\Player;
 
-use Merjn\Speedy\Player\Player;
+use Merjn\Speedy\Player\Entity\Player;
 
 interface PlayerRepositoryInterface
 {
@@ -14,5 +14,5 @@ interface PlayerRepositoryInterface
      * @param string $username
      * @return Player
      */
-    public function getPlayerByName(string $username): Player;
+    public function getPlayerByName(string $username): ?Player;
 }

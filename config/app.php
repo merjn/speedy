@@ -10,6 +10,14 @@ return [
             'workers' => 5,
         ],
 
+        'database' => [
+            'db_driver' => 'pdo_mysql',
+            'user' => 'merijn',
+            'dbname' => 'speedydb',
+            'password' => '123456',
+            'dev_mode' => true,
+        ],
+
         'packet' => [
             'logging' => [
                 'enabled' => true,
@@ -23,6 +31,8 @@ return [
             \Merjn\Speedy\Routing\Provider\RouteServiceProvider::class,
             \Merjn\Speedy\Network\Session\Provider\SessionServiceProvider::class,
             \Merjn\Speedy\Network\Provider\NetworkServiceProvider::class,
+            \Merjn\Speedy\Database\DatabaseServiceProvider::class,
+            \Merjn\Speedy\Player\Provider\PlayerServiceProvider::class,
         ],
     ],
 ];
