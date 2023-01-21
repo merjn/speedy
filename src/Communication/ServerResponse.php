@@ -15,9 +15,11 @@ class ServerResponse implements ServerResponseInterface
      */
     private array $serverMessages = [];
 
-    public function add(ServerMessageInterface $serverMessage): void
+    public function add(ServerMessageInterface $serverMessage): self
     {
         $this->serverMessages[] = $serverMessage;
+
+        return $this;
     }
 
     public function getMessages(): array

@@ -27,7 +27,7 @@ trait InstantiatesMiddlewareTrait
      */
     protected function getMiddleware(Route $route): Collection
     {
-        return collect($route->getMiddleware())->each(function (string $middlewareClass): MiddlewareInterface {
+        return collect($route->getMiddleware())->map(function (string $middlewareClass): MiddlewareInterface {
             return $this->middleware[$middlewareClass] ?? $this->loadMiddlewareClass($middlewareClass);
         });
     }

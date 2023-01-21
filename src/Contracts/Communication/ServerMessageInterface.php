@@ -13,4 +13,11 @@ interface ServerMessageInterface
      * @return void
      */
     public function newString(string $argument): void;
+
+    /**
+     * Get the server message.
+     *
+     * @return string
+     */
+    public function getServerMessage(): string;
 }

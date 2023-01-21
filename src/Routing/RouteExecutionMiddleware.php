@@ -21,8 +21,6 @@ class RouteExecutionMiddleware implements MiddlewareInterface
 
         // We won't allow method injection through the container. At least, not for now. There's currently
         // no use case and therefore no need for it. If you need it, feel free to open a PR.
-        $controller->{$this->route->getAction()}($request);
-
-        return $next->handle($request);
+        return $controller->{$this->route->getAction()}($request);
     }
 }

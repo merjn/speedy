@@ -9,4 +9,5 @@ enum ServerMessageDelimiter: string
     case Tab = "\t";
     case Part = "/";
     case CarriageReturn = "\r";
+    case Space = " ";
 }

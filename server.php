@@ -6,8 +6,14 @@ use League\Config\Configuration;
 use Merjn\Speedy\AppKernel;
 use Merjn\Speedy\Config\Schema\App;
 use Merjn\Speedy\Config\Schema\Session;
-
+use OpenSwoole\Core\Coroutine\Pool\ClientPool
 require_once __DIR__ . '/vendor/autoload.php';
+
+\OpenSwoole\Coroutine::set([
+    'hook_flags' => \OpenSwoole\Runtime::HOOK_TCP,
+]);
+
+
 
 $container = new League\Container\Container();
 $configuration = new Configuration();

@@ -25,6 +25,7 @@ class Router
     public function dispatch(RequestInterface $request): ServerResponseInterface
     {
         $header = $request->getPacketHeader();
+        print("Got header $header");
         if (!is_null($route = $this->routeRepository->get($header))) {
             $middleware = $route->getMiddleware();
             $middleware[] = new RouteExecutionMiddleware($route);

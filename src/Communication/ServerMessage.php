@@ -9,16 +9,22 @@ use Merjn\Speedy\Contracts\Communication\ServerMessageInterface;
 class ServerMessage implements ServerMessageInterface
 {
     /**
+     * @var string
+     */
+    private string $buffer = "";
+
+    /**
+     * @var bool
+     */
+    private bool $finished = false;
+
+    /**
      * Create a new server message.
      *
      * @param string $header
-     * @param string $buffer
-     * @param bool $finished
      */
     public function __construct(
-        private string $header,
-        private string $buffer = "",
-        private bool $finished = false,
+        private string $header
     ) {
         $this->writeHeader($this->header);
     }
@@ -49,5 +55,15 @@ class ServerMessage implements ServerMessageInterface
     public function newString(string $argument): void
     {
         $this->appendArgument($argument, ServerMessageDelimiter::CarriageReturn);
+    }
+
+    public function getServerMessage(): string
+    {
+        if (!$this->finished) {
+            $this->buffer .= "##";
+            $this->finished = true;
+        }
+
+        return $this->buffer;
     }
 }

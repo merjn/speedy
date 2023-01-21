@@ -10,9 +10,9 @@ interface ServerResponseInterface
      * Add a server message to the response.
      *
      * @param ServerMessageInterface $serverMessage
-     * @return void
+     * @return self
      */
-    public function add(ServerMessageInterface $serverMessage): void;
+    public function add(ServerMessageInterface $serverMessage): self;
 
     /**
      * Get the server messages.
