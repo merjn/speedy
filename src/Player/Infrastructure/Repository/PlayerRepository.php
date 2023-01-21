@@ -21,4 +21,10 @@ class PlayerRepository extends EntityRepository implements PlayerRepositoryInter
             ->getQuery()
             ->getResult()[0] ?? null;
     }
+
+    public function persist(Player $player): void
+    {
+        $this->getEntityManager()->persist($player);
+        $this->getEntityManager()->flush();
+    }
 }

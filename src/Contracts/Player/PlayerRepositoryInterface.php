@@ -15,4 +15,6 @@ interface PlayerRepositoryInterface
      * @return Player
      */
     public function getPlayerByName(string $username): ?Player;
+
+    public function persist(Player $player): void;
 }

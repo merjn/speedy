@@ -34,7 +34,8 @@ class AppServiceProvider extends AbstractServiceProvider
         $this->getContainer()->add(CreateUserAction::class, function () {
             return new CreateUserAction(
                 $this->getContainer()->get(VerifyUsernameAction::class),
-                $this->getContainer()->get(UsernameExistsAction::class)
+                $this->getContainer()->get(UsernameExistsAction::class),
+                $this->getContainer()->get(PlayerRepositoryInterface::class)
             );
         });
     }

@@ -15,5 +15,6 @@ class CreateUserDto
         public readonly string $birthday,
         public readonly string $sex,
         public readonly string $country,
+        public readonly string $motto
     ) { }
 }
