@@ -15,6 +15,7 @@ use Merjn\Speedy\Network\Config\NetworkConfig;
 use Merjn\Speedy\Network\Hook\ConnectHookBuilder;
 use Merjn\Speedy\Network\Hook\NetworkHooks;
 use Merjn\Speedy\Network\Hook\OnReceiveHookBuilder;
+use Merjn\Speedy\Network\Hook\WorkerStartHookBuilder;
 use Merjn\Speedy\Network\Logging\OutgoingPacketLoggerDecorator;
 use Merjn\Speedy\Network\OpenSwooleServerFactory;
 use Merjn\Speedy\Network\ServerBootstrap;
@@ -58,6 +59,7 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
         $hooks = new Collection([
             $this->addConnectionHook()(),
             $this->addOnReceiveHook()(),
+            $this->addWorkerStartedHook()(),
         ]);
 
         $this->getContainer()->add(NetworkHooks::class, fn (): NetworkHooks => new NetworkHooks($hooks));
@@ -88,13 +90,23 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
         return $this->getContainer()->get(OnReceiveHookBuilder::class);
     }
 
+    protected function addWorkerStartedHook(): WorkerStartHookBuilder
+    {
+        $this->getContainer()->add(WorkerStartHookBuilder::class, function () {
+            return new WorkerStartHookBuilder();
+        });
+
+        return $this->getContainer()->get(WorkerStartHookBuilder::class);
+    }
+
     protected function createNetworkConfig(): NetworkConfig
     {
         $config = $this->getContainer()->get(Configuration::class);
 
         return new NetworkConfig(
             $config->get('app.network.server'),
-            $config->get('app.network.port')
+            $config->get('app.network.port'),
+            $config->get('app.network.workers')
         );
     }
 

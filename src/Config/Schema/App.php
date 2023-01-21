@@ -13,6 +13,7 @@ class App
             'network' => Expect::structure([
                 'server' => Expect::string()->required(),
                 'port' => Expect::int()->required(),
+                'workers' => Expect::int()->required(),
             ]),
 
             'packet' => Expect::structure([

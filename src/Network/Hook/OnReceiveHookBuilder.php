@@ -10,6 +10,7 @@ use Merjn\Speedy\Routing\Exceptions\UndefinedRouteException;
 use Merjn\Speedy\Routing\Router;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use OpenSwoole\Server;
 use Psr\Log\LoggerInterface;
 
 class OnReceiveHookBuilder implements HookBuilderInterface
@@ -23,7 +24,8 @@ class OnReceiveHookBuilder implements HookBuilderInterface
 
     public function __invoke(): Hook
     {
-        return new Hook('receive', function ($server, $fd, $reactorId, $data) {
+        return new Hook('receive', function (Server $server, int $fd, int $reactorId, string $data) {
+            $this->logger->info("Worker {$server->worker_id} received data from {$fd}: {$data}");
             $session = $this->sessionRepository->getById($fd);
 
             try {

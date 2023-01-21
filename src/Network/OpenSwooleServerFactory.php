@@ -24,6 +24,8 @@ class OpenSwooleServerFactory
     public function create(Collection $hooks): Server
     {
         return tap(new Server(...$this->createServerConfig()), function (Server $server) use ($hooks): void {
+            $server->set(['worker_num' => $this->config->workers]);
+
             $hooks->each(fn (Hook $hook): bool => $server->on($hook->getEvent(), $hook->getCallback()));
         });
     }

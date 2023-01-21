@@ -7,6 +7,7 @@ return [
         'network' => [
             'server' => '0.0.0.0',
             'port' => 30001,
+            'workers' => 5,
         ],
 
         'packet' => [
