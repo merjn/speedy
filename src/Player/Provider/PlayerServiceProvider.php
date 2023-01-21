@@ -7,8 +7,8 @@ namespace Merjn\Speedy\Player\Provider;
 use Doctrine\ORM\EntityManagerInterface;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use Merjn\Speedy\Contracts\Player\PlayerRepositoryInterface;
-use Merjn\Speedy\Player\Entity\Player;
-use Merjn\Speedy\Player\PlayerRepository;
+use Merjn\Speedy\Player\Domain\Entity\Player;
+use Merjn\Speedy\Player\Infrastructure\Repository\PlayerRepository;
 
 class PlayerServiceProvider extends AbstractServiceProvider
 {

@@ -23,6 +23,11 @@ class Request implements RequestInterface
     private int $position = 0;
 
     /**
+     * @var array contains the arguments.
+     */
+    private array $arguments = [];
+
+    /**
      * Create a new request instance.
      *
      * @param SessionInterface $session
@@ -87,5 +92,16 @@ class Request implements RequestInterface
         }
 
         return $messages[$index];
+    }
+
+    public function getKvString(int $index, ServerMessageDelimiter $delimiter = ServerMessageDelimiter::CarriageReturn): string
+    {
+        $message = $this->get($index, $delimiter);
+
+        if (!str_contains($message, "=")) {
+            throw new \InvalidArgumentException("The message does not contain a key-value pair.");
+        }
+
+        return explode("=", $message)[1];
     }
 }

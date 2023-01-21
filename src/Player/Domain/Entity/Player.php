@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\Speedy\Player\Entity;
+namespace Merjn\Speedy\Player\Domain\Entity;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

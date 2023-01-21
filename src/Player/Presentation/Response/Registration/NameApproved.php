@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Response\Registration;
+namespace Merjn\Speedy\Player\Presentation\Response\Registration;
 
 use Merjn\Speedy\Communication\ServerMessage;
 

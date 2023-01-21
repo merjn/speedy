@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Response\Handshake;
+namespace Merjn\Speedy\Player\Presentation\Response\Handshake;
 
 use Merjn\Speedy\Communication\ServerMessage;
 

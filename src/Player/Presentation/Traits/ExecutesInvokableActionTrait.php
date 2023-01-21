@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Traits;
+namespace Merjn\Speedy\Player\Presentation\Traits;
 
 trait ExecutesInvokableActionTrait
 {

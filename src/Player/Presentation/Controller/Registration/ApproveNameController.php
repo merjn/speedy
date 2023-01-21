@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Controller\Registration;
+namespace Merjn\Speedy\Player\Presentation\Controller\Registration;
 
-use Merjn\App\Application\Registration\VerifyUsernameAction;
-use Merjn\App\Presentation\Response\Registration\NameApproved;
-use Merjn\App\Presentation\Response\Registration\NameUnacceptable;
-use Merjn\App\Presentation\Traits\ExecutesInvokableActionTrait;
+use Merjn\Speedy\Player\Application\Registration\VerifyUsernameAction;
+use Merjn\Speedy\Player\Presentation\Response\Registration\NameApproved;
+use Merjn\Speedy\Player\Presentation\Response\Registration\NameUnacceptable;
+use Merjn\Speedy\Player\Presentation\Traits\ExecutesInvokableActionTrait;
 use Merjn\Speedy\Communication\ServerResponse;
 use Merjn\Speedy\Contracts\Communication\RequestInterface;
 use Merjn\Speedy\Contracts\Communication\ServerResponseInterface;

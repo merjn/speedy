@@ -36,7 +36,7 @@ return array(
     'OpenSwoole\\Core\\' => array($vendorDir . '/openswoole/core/src'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Merjn\\Speedy\\' => array($baseDir . '/src'),
-    'Merjn\\App\\' => array($baseDir . '/app'),
+    'Merjn\\Database\\' => array($baseDir . '/database'),
     'League\\Container\\' => array($vendorDir . '/league/container/src'),
     'League\\Config\\' => array($vendorDir . '/league/config/src'),
     'Laminas\\Code\\' => array($vendorDir . '/laminas/laminas-code/src'),

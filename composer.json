@@ -21,7 +21,6 @@
     "autoload": {
         "psr-4": {
             "Merjn\\Speedy\\": "src/",
-            "Merjn\\App\\": "app/",
             "Merjn\\Database\\": "database/"
         },
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Application\Registration;
+namespace Merjn\Speedy\Player\Application\Registration;
 
 class VerifyUsernameAction
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Merjn\Speedy\Player;
+namespace Merjn\Speedy\Player\Infrastructure\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Merjn\Speedy\Contracts\Player\PlayerRepositoryInterface;
-use Merjn\Speedy\Player\Entity\Player;
+use Merjn\Speedy\Player\Domain\Entity\Player;
 
 class PlayerRepository extends EntityRepository implements PlayerRepositoryInterface
 {

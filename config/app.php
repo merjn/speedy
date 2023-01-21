@@ -25,14 +25,14 @@ return [
         ],
 
         'providers' => [
-            \Merjn\App\Presentation\Middleware\MiddlewareServiceProvider::class,
+            \Merjn\Speedy\Database\DatabaseServiceProvider::class,
+            \Merjn\Speedy\Player\Provider\PlayerServiceProvider::class,
+            \Merjn\Speedy\Player\Presentation\Middleware\MiddlewareServiceProvider::class,
             \Merjn\Speedy\Communication\Provider\CommunicationServiceProvider::class,
-            \Merjn\App\Application\Provider\AppServiceProvider::class,
+            \Merjn\Speedy\Player\Application\Provider\AppServiceProvider::class,
             \Merjn\Speedy\Routing\Provider\RouteServiceProvider::class,
             \Merjn\Speedy\Network\Session\Provider\SessionServiceProvider::class,
             \Merjn\Speedy\Network\Provider\NetworkServiceProvider::class,
-            \Merjn\Speedy\Database\DatabaseServiceProvider::class,
-            \Merjn\Speedy\Player\Provider\PlayerServiceProvider::class,
         ],
     ],
 ];

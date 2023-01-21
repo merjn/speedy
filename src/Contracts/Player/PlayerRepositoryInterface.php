@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Contracts\Player;
 
-use Merjn\Speedy\Player\Entity\Player;
+use Merjn\Speedy\Player\Domain\Entity\Player;
 
 interface PlayerRepositoryInterface
 {

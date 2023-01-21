@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Middleware;
+namespace Merjn\Speedy\Player\Presentation\Middleware;
 
 use Merjn\Speedy\Contracts\Communication\RequestInterface;
 use Merjn\Speedy\Contracts\Communication\ServerResponseInterface;

@@ -33,6 +33,15 @@ interface RequestInterface
     public function get(int $index, ServerMessageDelimiter $delimiter = ServerMessageDelimiter::Space): string;
 
     /**
+     * Get a value from the packet message.
+     *
+     * @param int $index
+     * @param ServerMessageDelimiter $delimiter
+     * @return string
+     */
+    public function getKvString(int $index, ServerMessageDelimiter $delimiter = ServerMessageDelimiter::CarriageReturn): string;
+
+    /**
      * Check if there's still a packet body to read.
      *
      * @return bool

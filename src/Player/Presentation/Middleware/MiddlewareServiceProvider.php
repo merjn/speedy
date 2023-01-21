@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Middleware;
+namespace Merjn\Speedy\Player\Presentation\Middleware;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use Monolog\Handler\StreamHandler;

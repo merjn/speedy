@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Merjn\App\Presentation\Controller;
+namespace Merjn\Speedy\Player\Presentation\Controller;
 
-use Merjn\App\Presentation\Response\Handshake\EncryptionOffResponse;
-use Merjn\App\Presentation\Response\Handshake\SecretKeyResponse;
+use Merjn\Speedy\Player\Presentation\Response\Handshake\EncryptionOffResponse;
+use Merjn\Speedy\Player\Presentation\Response\Handshake\SecretKeyResponse;
 use Merjn\Speedy\Communication\ServerResponse;
 use Merjn\Speedy\Contracts\Communication\RequestInterface;
 use Merjn\Speedy\Contracts\Communication\ServerResponseInterface;

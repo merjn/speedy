@@ -70,7 +70,7 @@ class ComposerStaticInit06fc8012351d85675eed1a87c0b7dd44
         array (
             'Monolog\\' => 8,
             'Merjn\\Speedy\\' => 13,
-            'Merjn\\App\\' => 10,
+            'Merjn\\Database\\' => 15,
         ),
         'L' => 
         array (
@@ -227,9 +227,9 @@ class ComposerStaticInit06fc8012351d85675eed1a87c0b7dd44
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
-        'Merjn\\App\\' => 
+        'Merjn\\Database\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/app',
+            0 => __DIR__ . '/../..' . '/database',
         ),
         'League\\Container\\' => 
         array (
