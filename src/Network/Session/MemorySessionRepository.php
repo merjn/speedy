@@ -6,6 +6,7 @@ namespace Merjn\Speedy\Network\Session;
 
 use Merjn\Speedy\Contracts\Network\Session\SessionInterface;
 use Merjn\Speedy\Contracts\Network\Session\SessionRepositoryInterface;
+use Merjn\Speedy\Network\Session\Exception\SessionIdNotFoundException;
 use Merjn\Speedy\Sync\Mutex;
 use SplObjectStorage;
 

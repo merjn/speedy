@@ -1,6 +1,6 @@
 <?php
 
-namespace Merjn\Speedy\Network\Session;
+namespace Merjn\Speedy\Network\Session\Exception;
 
 class SessionIdNotFoundException extends \Exception
 {

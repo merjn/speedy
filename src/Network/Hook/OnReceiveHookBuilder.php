@@ -25,10 +25,11 @@ class OnReceiveHookBuilder implements HookBuilderInterface
     public function __invoke(): Hook
     {
         return new Hook('receive', function (Server $server, int $fd, int $reactorId, string $data) {
-            $this->logger->info("Worker {$server->worker_id} received data from {$fd}: {$data}");
+//            $this->logger->info("Worker {$server->worker_id} received data from {$fd}: {$data}");
             $session = $this->sessionRepository->getById($fd);
 
             try {
+                dump($data);
                 $response = $this->router->dispatch($this->requestFactory->createRequest($session, $data));
                 foreach ($response->getMessages() as $message) {
                     $server->send($fd, $message->getServerMessage());

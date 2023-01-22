@@ -12,8 +12,9 @@ use PHPUnit\Framework\TestCase;
 final class RequestTest extends TestCase
 {
     /**
-     * These packets are taken from the game client.
-     * @var array|string[]
+     * The key is the unprocessed packet from the client and the value is how it should be processed by the Request class.
+     *
+     * @var array<string, array>
      */
     private array $testPackets = [
         "22  VERSIONCHECK client002" => [
@@ -39,10 +40,19 @@ final class RequestTest extends TestCase
             ],
         ],
 
+        '18  MULTIPLE A: b C: d' => [
+            'length' => 18,
+            'header' => 'MULTIPLE',
+            'body' => [
+                'A' => 'b',
+                'C' => 'd',
+            ],
+        ],
+
         '27  STAT /ShockwaveVersion/10.4' => [
             'length' => 27,
             'header' => 'STAT',
-            'body' => '/ShockwaveVersion/10.4',
+            'body' => ['/ShockwaveVersion/10.4'],
         ],
 
         '13  MESSENGERINIT' => [
@@ -55,7 +65,7 @@ final class RequestTest extends TestCase
             'length' => 20,
             'header' => 'LOGIN',
             'body' => [
-                'Merijn', 'hallo123'
+                'Merjn', 'hallo123'
             ]
         ],
 
@@ -67,17 +77,18 @@ final class RequestTest extends TestCase
             ],
         ],
 
-        "396 REGISTER name=Merjn password=hallo123 email=sdjfjoi@live.nl figure=sd=001/0&hr=004/115,99,70&hd=002/255,204,153&ey=003/0&fc=001/255,204,153&bd=001/255,204,153&lh=001/255,204,153&rh=001/255,204,153&ch=003/232,177,55&ls=001/232,177,55&rs=001/232,177,55&lg=004/102,102,102&sh=003/121,94,83 directMail=0 birthday=31.01.1991 phonenumber=+44 customData=beep boop has_read_agreement=1 sex=Male country=" => [
-            'length' => 396,
+        "391 REGISTER name=hoi\rpassword=hoi123\remail=d@live.nl\rfigure=sd=001/0&hr=001/255,255,255&hd=002/255,204,153&ey=001/0&fc=001/255,204,153&bd=001/255,204,153&lh=001/255,204,153&rh=001/255,204,153&ch=001/232,177,55&ls=001/232,177,55&rs=001/232,177,55&lg=001/119,159,187&sh=001/175,220,223\rdirectMail=1\rbirthday=31.01.1991\rphonenumber=+44\rcustomData=ha ha ha =\rhas_read_agreement=1\rsex=Male\rcountry=\r" => [
+            'length' => 391,
             'header' => 'REGISTER',
             'body' => [
-                'name' => 'Merjn',
-                'password' => 'hallo123',
-                'figure' => 'sd=001/0&hr=004/115,99,70&hd=002/255,204,153&ey=003/0&fc=001/255,204,153&bd=001/255,204,153&lh=001/255,204,153&rh=001/255,204,153&ch=003/232,177,55&ls=001/232,177,55&rs=001/232,177,55&lg=004/102,102,102&sh=003/121,94,83',
-                'directMail' => '0',
+                'name' => 'hoi',
+                'password' => 'hoi123',
+                'email' => 'd@live.nl',
+                'figure' => 'sd=001/0&hr=001/255,255,255&hd=002/255,204,153&ey=001/0&fc=001/255,204,153&bd=001/255,204,153&lh=001/255,204,153&rh=001/255,204,153&ch=001/232,177,55&ls=001/232,177,55&rs=001/232,177,55&lg=001/119,159,187&sh=001/175,220,223',
+                'directMail' => '1',
                 'birthday' => '31.01.1991',
                 'phonenumber' => '+44',
-                'customData' => 'beep boop',
+                'customData' => 'ha ha ha =',
                 'has_read_agreement' => '1',
                 'sex' => 'Male',
                 'country' => '',
@@ -110,10 +121,10 @@ final class RequestTest extends TestCase
         foreach ($this->testPackets as $packet => $expected) {
             $request = new Request($session, $packet);
 
-            $this->assertEquals($expected['length'], $request->getBodyLength(), "Expected length {$expected['length']} for header {$expected['header']}, got {$request->getBodyLength()} instead");
+            $this->assertEquals($expected['length'], $request->getRequestLength(), "Expected length {$expected['length']} for header {$expected['header']}, got {$request->getRequestLength()} instead");
             $this->assertEquals($expected['header'], $request->getPacketHeader(), "Expected header {$expected['header']} does not match {$request->getPacketHeader()}");
 
-            $this->assertEquals($expected['body'], $request->getBody());
+            $this->assertEqualsCanonicalizing($expected['body'], $request->getBody());
         }
     }
 }

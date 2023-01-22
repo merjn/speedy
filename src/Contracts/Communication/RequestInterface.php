@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Contracts\Communication;
 
-use Merjn\Speedy\Communication\ServerMessageDelimiter;
-
 interface RequestInterface extends HasSessionInterface
 {
     /**
@@ -16,22 +14,12 @@ interface RequestInterface extends HasSessionInterface
     public function getPacketHeader(): string;
 
     /**
-     * Get a packet message.
+     * Get a packet.
      *
-     * @param int $index
-     * @param ServerMessageDelimiter $delimiter
-     * @return string
+     * @param int|string $packet
+     * @return ?string
      */
-    public function get(int $index, ServerMessageDelimiter $delimiter = ServerMessageDelimiter::Space): string;
-
-    /**
-     * Get a value from the packet message.
-     *
-     * @param int $index
-     * @param ServerMessageDelimiter $delimiter
-     * @return string
-     */
-    public function getKvString(int $index, ServerMessageDelimiter $delimiter = ServerMessageDelimiter::CarriageReturn): string;
+    public function get(int|string $packet): ?string;
 
     /**
      * Check if there's still a packet body to read.
@@ -52,7 +40,7 @@ interface RequestInterface extends HasSessionInterface
      *
      * @return int
      */
-    public function getBodyLength(): int;
+    public function getRequestLength(): int;
 
     /**
      * Get the amount of remaining messages.
