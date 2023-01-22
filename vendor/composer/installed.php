@@ -5,11 +5,23 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0cac737c33097123a15c282b49101a12c47995fa',
+        'reference' => '777cd87050ec84c152103dcc81f9d010beeb2f54',
         'name' => 'merjn/speedy',
         'dev' => true,
     ),
     'versions' => array(
+        'cordoval/hamcrest-php' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
+        'davedevelopment/hamcrest-php' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
         'dflydev/dot-access-data' => array(
             'pretty_version' => 'v3.0.2',
             'version' => '3.0.2.0',
@@ -136,6 +148,15 @@
             'reference' => '88354616f4cf4f6620910fd035e282173ba453e8',
             'dev_requirement' => false,
         ),
+        'hamcrest/hamcrest-php' => array(
+            'pretty_version' => 'v2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../hamcrest/hamcrest-php',
+            'aliases' => array(),
+            'reference' => '8c3d0a3f6af734494ad8f6fbbee0ba92422859f3',
+            'dev_requirement' => false,
+        ),
         'illuminate/collections' => array(
             'pretty_version' => 'v9.48.0',
             'version' => '9.48.0.0',
@@ -181,6 +202,12 @@
             'reference' => '8c77cfd609addaba90a5efbf585c091c9f9e6c79',
             'dev_requirement' => false,
         ),
+        'kodova/hamcrest-php' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => '*',
+            ),
+        ),
         'laminas/laminas-code' => array(
             'pretty_version' => '4.8.0',
             'version' => '4.8.0.0',
@@ -214,7 +241,16 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0cac737c33097123a15c282b49101a12c47995fa',
+            'reference' => '777cd87050ec84c152103dcc81f9d010beeb2f54',
+            'dev_requirement' => false,
+        ),
+        'mockery/mockery' => array(
+            'pretty_version' => '1.5.1',
+            'version' => '1.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mockery/mockery',
+            'aliases' => array(),
+            'reference' => 'e92dcc83d5a51851baf5f5591d32cb2b16e3684e',
             'dev_requirement' => false,
         ),
         'monolog/monolog' => array(

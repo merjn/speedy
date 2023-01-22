@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"Merjn\\Tests\\Unit\\Communication\\RequestTest::testRequest":0.001}}
+{"version":1,"defects":{"Merjn\\Tests\\Unit\\Communication\\RequestTest::testRequest":4},"times":{"Merjn\\Tests\\Unit\\Communication\\RequestTest::testRequest":0.005}}

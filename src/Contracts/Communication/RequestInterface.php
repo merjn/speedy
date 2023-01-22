@@ -5,17 +5,9 @@ declare(strict_types=1);
 namespace Merjn\Speedy\Contracts\Communication;
 
 use Merjn\Speedy\Communication\ServerMessageDelimiter;
-use Merjn\Speedy\Contracts\Network\Session\SessionInterface;
 
-interface RequestInterface
+interface RequestInterface extends HasSessionInterface
 {
-    /**
-     * Get the user's session from the request.
-     *
-     * @return SessionInterface
-     */
-    public function getSession(): SessionInterface;
-
     /**
      * Get the packet header.
      *
@@ -49,9 +41,23 @@ interface RequestInterface
     public function hasBody(): bool;
 
     /**
+     * Get the body.
+     *
+     * @return array
+     */
+    public function getBody(): array;
+
+    /**
+     * Get the length of the packet. Retrieved from the first message in the packet.
+     *
+     * @return int
+     */
+    public function getBodyLength(): int;
+
+    /**
      * Get the amount of remaining messages.
      *
      * @return int
      */
-    public function getMessageCount(): int;
+    public function getLength(): int;
 }

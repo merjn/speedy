@@ -26,7 +26,7 @@ class LoginController
      */
     public function __invoke(RequestInterface $request): ServerResponseInterface
     {
-        if ($request->getMessageCount() < 2) {
+        if ($request->getLength() < 2) {
             return new ServerResponse();
         }
 

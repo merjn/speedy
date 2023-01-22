@@ -16,7 +16,8 @@
         "doctrine/dbal": "^3.5",
         "symfony/yaml": "^6.2",
         "symfony/cache": "^6.2",
-        "doctrine/migrations": "^3.5"
+        "doctrine/migrations": "^3.5",
+        "mockery/mockery": "^1.5"
     },
     "autoload": {
         "psr-4": {
