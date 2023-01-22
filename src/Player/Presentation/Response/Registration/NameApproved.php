@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Player\Presentation\Response\Registration;
 
-use Merjn\Speedy\Communication\ServerMessage;
+use Merjn\Speedy\Communication\ServerBody;
 
-class NameApproved extends ServerMessage
+class NameApproved extends ServerBody
 {
     public function __construct()
     {

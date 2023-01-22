@@ -10,7 +10,7 @@ interface ServerMessageFactoryInterface
      * Create a new server message.
      *
      * @param string $header
-     * @return ServerMessageInterface
+     * @return ServerBodyInterface
      */
-    public function createFromHeader(string $header): ServerMessageInterface;
+    public function createFromHeader(string $header): ServerBodyInterface;
 }

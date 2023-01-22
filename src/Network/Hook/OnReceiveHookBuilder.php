@@ -32,9 +32,9 @@ class OnReceiveHookBuilder implements HookBuilderInterface
             try {
                 $response = $this->router->dispatch($this->requestFactory->createRequest($session, $data));
                 foreach ($response->getMessages() as $message) {
-                    $server->send($fd, $message->getServerMessage());
+                    $server->send($fd, $message->getBody());
 
-                    $this->logger->info("Sent message {$message->getServerMessage()} to session {$session->getId()}");
+                    $this->logger->info("Sent message {$message->getBody()} to session {$session->getId()}");
                 }
             } catch (UndefinedRouteException $e) {
                 $this->logger->warning("[UNHANDLED PACKET] {$data}");

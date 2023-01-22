@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Merjn\Speedy\Communication;
 
-use Merjn\Speedy\Contracts\Communication\ServerMessageInterface;
+use Merjn\Speedy\Contracts\Communication\ServerBodyInterface;
 
-class ServerMessage implements ServerMessageInterface
+class ServerBody implements ServerBodyInterface
 {
     /**
      * @var string
@@ -57,7 +57,7 @@ class ServerMessage implements ServerMessageInterface
         $this->appendArgument($argument, ServerMessageDelimiter::CarriageReturn);
     }
 
-    public function getServerMessage(): string
+    public function getBody(): string
     {
         if (!$this->finished) {
             $this->buffer .= "##";

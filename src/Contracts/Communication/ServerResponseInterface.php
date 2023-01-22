@@ -9,15 +9,15 @@ interface ServerResponseInterface
     /**
      * Add a server message to the response.
      *
-     * @param ServerMessageInterface $serverMessage
+     * @param ServerBodyInterface $serverMessage
      * @return self
      */
-    public function add(ServerMessageInterface $serverMessage): self;
+    public function add(ServerBodyInterface $serverMessage): self;
 
     /**
      * Get the server messages.
      *
-     * @return ServerMessageInterface[]
+     * @return ServerBodyInterface[]
      */
     public function getMessages(): array;
 }
