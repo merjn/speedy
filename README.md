@@ -45,7 +45,7 @@ you want to use. You can find a list of supported drivers
 You will also have to migrate the database to the new driver. You can do this by running the Doctrine migrations. You can
 find more information about this [here](https://www.doctrine-project.org/projects/doctrine-migrations/en/2.2/reference/introduction.html).
 
-#### Database pooling is current unsupported
+#### Database pooling is currently unsupported
 Speedy currently does not support database pooling, like mature emulators do. This means that the database connection
 will be closed after every request. This is not ideal, but it is not a problem for small emulators. If you want to use
 Speedy for a large hotel, you will have to implement database pooling yourself. If you do this, please consider making a
