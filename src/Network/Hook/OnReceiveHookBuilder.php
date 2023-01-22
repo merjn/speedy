@@ -25,11 +25,11 @@ class OnReceiveHookBuilder implements HookBuilderInterface
     public function __invoke(): Hook
     {
         return new Hook('receive', function (Server $server, int $fd, int $reactorId, string $data) {
-//            $this->logger->info("Worker {$server->worker_id} received data from {$fd}: {$data}");
+            $this->logger->info("Worker {$server->worker_id} received data from {$fd}: {$data}");
+
             $session = $this->sessionRepository->getById($fd);
 
             try {
-                dump($data);
                 $response = $this->router->dispatch($this->requestFactory->createRequest($session, $data));
                 foreach ($response->getMessages() as $message) {
                     $server->send($fd, $message->getServerMessage());
@@ -38,6 +38,9 @@ class OnReceiveHookBuilder implements HookBuilderInterface
                 }
             } catch (UndefinedRouteException $e) {
                 $this->logger->warning("[UNHANDLED PACKET] {$data}");
+            } catch (\Exception $e) {
+                $server->close($fd);
+                $this->logger->error("Worker {$server->worker_id} closed connection from {$fd} due to an exception: {$e->getMessage()}");
             }
         });
     }

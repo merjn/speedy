@@ -19,4 +19,12 @@ interface SessionRepositoryInterface
      * @return SessionInterface
      */
     public function getById(mixed $id): SessionInterface;
+
+    /**
+     * Remove a session.
+     *
+     * @param mixed $id
+     * @return bool
+     */
+    public function remove(mixed $id): bool;
 }

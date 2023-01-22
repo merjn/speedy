@@ -14,6 +14,7 @@ use Merjn\Speedy\Contracts\Network\Session\SessionRepositoryInterface;
 use Merjn\Speedy\Network\Config\NetworkConfig;
 use Merjn\Speedy\Network\Hook\ConnectHookBuilder;
 use Merjn\Speedy\Network\Hook\NetworkHooks;
+use Merjn\Speedy\Network\Hook\OnCloseHookBuilder;
 use Merjn\Speedy\Network\Hook\OnReceiveHookBuilder;
 use Merjn\Speedy\Network\Hook\WorkerStartHookBuilder;
 use Merjn\Speedy\Network\Logging\OutgoingPacketLoggerDecorator;
@@ -60,6 +61,7 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
             $this->addConnectionHook()(),
             $this->addOnReceiveHook()(),
             $this->addWorkerStartedHook()(),
+            $this->addOnCloseHook()(),
         ]);
 
         $this->getContainer()->add(NetworkHooks::class, fn (): NetworkHooks => new NetworkHooks($hooks));
@@ -97,6 +99,17 @@ class NetworkServiceProvider extends AbstractServiceProvider implements Bootable
         });
 
         return $this->getContainer()->get(WorkerStartHookBuilder::class);
+    }
+
+    protected function addOnCloseHook(): OnCloseHookBuilder
+    {
+        $this->getContainer()->add(OnCloseHookBuilder::class, function () {
+            return new OnCloseHookBuilder(
+                $this->getContainer()->get(SessionRepositoryInterface::class)
+            );
+        });
+
+        return $this->getContainer()->get(OnCloseHookBuilder::class);
     }
 
     protected function createNetworkConfig(): NetworkConfig

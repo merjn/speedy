@@ -59,4 +59,19 @@ class MemorySessionRepository implements SessionRepositoryInterface
             $this->sessionsFromStorage->attach($session, $session->getId());
         });
     }
+
+    public function remove(mixed $id): bool
+    {
+        return $this->mx->synchronize(function () use ($id): bool {
+            if (isset($this->sessions[$id])) {
+                $session = $this->sessions[$id];
+                unset($this->sessions[$id]);
+                $this->sessionsFromStorage->detach($session);
+
+                return true;
+            }
+
+            return false;
+        });
+    }
 }

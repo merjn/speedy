@@ -20,7 +20,7 @@ class FindUserController
 
     public function __invoke(RequestInterface $request): ServerResponseInterface
     {
-        if (!$request->hasBody()) {
+        if ($request->getLength() < 1) {
             return new ServerResponse();
         }
 
