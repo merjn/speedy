@@ -55,20 +55,13 @@ trait ParsesIncomingRequestTrait
     {
         $this->packetBuffer = str_replace(': ', ':', $this->packetBuffer);
 
-        if (!str_contains($this->packetBuffer, ' ')) {
-            [$key, $value] = explode(':', $this->packetBuffer);
-            $this->body[$key] = $value;
-
-            return;
-        }
-
         foreach (explode(' ', $this->packetBuffer) as $argument) {
             [$key, $value] = explode(':', $argument);
             $this->body[$key] = $value;
         }
     }
 
-    private function parseMap(): void
+    protected function parseMap(): void
     {
         foreach (explode("\r", $this->packetBuffer) as $argument) {
             if ($argument === '') {
@@ -86,7 +79,7 @@ trait ParsesIncomingRequestTrait
         }
     }
 
-    private function parseArray(): void
+    protected function parseArray(): void
     {
         if (str_contains($this->packetBuffer, '/')) {
             $this->body[] = $this->packetBuffer;
